@@ -7,11 +7,21 @@ import './App.css';
 function App() {
   const [currentTime, setCurrentTime] = useState(0);
 
+  const [tweet, setTweet] = useState("");
+
   useEffect(() => {
     fetch('/time').then(res => res.json()).then(data => {
       setCurrentTime(data.time);
     });
   }, []);
+
+
+  useEffect(() => {
+    fetch('/tweet').then(res => res.json()).then(data => {
+      setTweet(data.tweet);
+    });
+  }, []);
+
 
   return (
     <div className="App">
@@ -30,6 +40,8 @@ function App() {
         </a>
         
         <p>The current time is {currentTime}.</p>
+        <p>Tweet: {tweet}</p>
+
       </header>
     </div>
   );

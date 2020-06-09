@@ -1,11 +1,18 @@
+import sys
+import os.path
+
+sys.path.append("/Library/Python/3.7/site-packages")
+# print("Here: ", sys.path)
+
+# print("Here2: ", os.path)
+# /Library/Python/3.7/site-packages
+
+
+
 import time
 import markovify
-import nltk
-
-from nltk import word_tokenize
-from nltk.tokenize import sent_tokenize
-
 from flask import Flask
+
 
 app = Flask(__name__)
 
@@ -16,10 +23,13 @@ def get_current_time():
 
 @app.route('/tweet')
 def generate_tweet():
-    with open("tw.txt") as tweets:
+    # return {'tweet': "test string"}
+    with open("data.txt") as tweets:
         text = tweets.read()
 
     corpus = markovify.NewlineText(text, state_size=5)
+    corpus = corpus.compile()
+
     tweet = corpus.make_short_sentence(350, tries=100)
     return {'tweet': tweet}
 
