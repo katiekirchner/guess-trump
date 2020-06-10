@@ -1,0 +1,26 @@
+.tweetBox{
+    margin: 2%;
+    background-color: lightgray;
+    height: 300px;
+    width: 600px;
+
+}
+
+
+
+
+.avatar{
+
+    height: 60px;
+    width: auto;
+    border-radius: 50px;
+    top: 10px;
+    right: 250px;
+    position: relative;
+}
+
+
+.tweetText{
+    font-size: 20px;
+    margin: 3%;
+}

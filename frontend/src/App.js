@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
-// import Register from "./component/register.js";
+import './css/App.css';
+import bird from './component/trumpBird1.png';
+import TweetBox from './component/tweetBox';
+
+
 
 
 function App() {
-  const [currentTime, setCurrentTime] = useState(0);
 
   const [tweet, setTweet] = useState("");
+  const [random, setRandom] = useState("");
+  const [random2, setRandom2] = useState("");
 
-  useEffect(() => {
-    fetch('/time').then(res => res.json()).then(data => {
-      setCurrentTime(data.time);
-    });
-  }, []);
 
 
   useEffect(() => {
@@ -22,25 +20,41 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    fetch('/random').then(res => res.json()).then(data => {
+      setRandom(data.random);
+    });
+  }, []);
+
+  useEffect(() => {
+    fetch('/random').then(res => res.json()).then(data => {
+      setRandom2(data.random);
+    });
+  }, []);
+
+
+  function renderTweet(i){
+    return <TweetBox text={i} />;
+  }
+
+
 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        {/* <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
+        <img src={bird} className="trump-bird" alt="logo" />
+
+
+        {renderTweet(tweet)}
+        {renderTweet(random)}
+        {renderTweet(random2)}
         
-        <p>The current time is {currentTime}.</p>
-        <p>Tweet: {tweet}</p>
+      
+        {/* <p>Tweet: {tweet}</p>
+        <p>Tweet: {random}</p>
+        <p>Tweet: {random2}</p> */}
+
+
 
       </header>
     </div>
