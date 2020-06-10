@@ -8,6 +8,9 @@ import markovify
 import random
 from flask import Flask
 
+corpus = open("data.txt").read()
+corpus = markovify.NewlineText(corpus, state_size=5)
+
 
 
 app = Flask(__name__, static_folder='./frontend/build', static_url_path='/')
@@ -19,42 +22,25 @@ def index():
 
 
 
-@app.route('/time')
-def get_current_time():
-    return {'time': time.time()}
-
-
-
-
-
-
-def make_corpus():
-
-    global corpus   
-
-    with open("data.txt") as tweets:
-        text = tweets.read()
-
-    corpus = markovify.NewlineText(text, state_size=5)
-    corpus = corpus.compile()
-
-    return corpus
-
-
 
 
 
 @app.route('/tweet')
 def generate_tweet():
-    # return {'tweet': "test string"}
-    with open("data.txt") as tweets:
-        text = tweets.read()
+    # with open("data.txt") as tweets:
+    #     text = tweets.read()
 
-    corpus = markovify.NewlineText(text, state_size=5)
-    corpus = corpus.compile()
+    # corpus = markovify.NewlineText(text, state_size=5)
+    # corpus = corpus.compile()
+    # global corpus   
+
+    # tweet = corpus.make_short_sentence(350, tries=100)
 
     tweet = corpus.make_short_sentence(350, tries=100)
+  
     return {'tweet': tweet}
+
+
 
 
 @app.route('/random')
@@ -73,3 +59,5 @@ def get_real_tweet():
     return {'random': o}
 
 
+if __name__ == '__main__':
+    app.run()
