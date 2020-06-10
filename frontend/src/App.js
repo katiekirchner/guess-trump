@@ -10,14 +10,14 @@ function App() {
   const [tweet, setTweet] = useState("");
 
   useEffect(() => {
-    fetch('/api/time').then(res => res.json()).then(data => {
+    fetch('/time').then(res => res.json()).then(data => {
       setCurrentTime(data.time);
     });
   }, []);
 
 
   useEffect(() => {
-    fetch('/api/tweet').then(res => res.json()).then(data => {
+    fetch('/tweet').then(res => res.json()).then(data => {
       setTweet(data.tweet);
     });
   }, []);

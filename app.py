@@ -15,7 +15,7 @@ from flask import Flask
 
 
 # app = Flask(__name__)
-app = Flask(__name__, static_folder='../build', static_url_path='/')
+app = Flask(__name__, static_folder='./frontend/build', static_url_path='/')
 
 
 @app.route('/')
@@ -24,12 +24,12 @@ def index():
 
 
 
-@app.route('/api/time')
+@app.route('/time')
 def get_current_time():
     return {'time': time.time()}
 
 
-@app.route('/api/tweet')
+@app.route('/tweet')
 def generate_tweet():
     # return {'tweet': "test string"}
     with open("data.txt") as tweets:
