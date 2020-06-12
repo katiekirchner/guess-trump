@@ -4,7 +4,6 @@
 
 .header{
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
-
   height: 12vh;
 }
 
@@ -13,33 +12,52 @@
   height: 70px;
   width: auto;
   top: 10px;
-  left: 10px;
+  left: 20px;
   position: absolute;
 }
 
 
 
 .grid-container{
+  padding-left:2vw;
+  width: 90vw;
   display: grid;
-  grid-column-gap: 1%;
+  grid-column-gap: 15px;
   margin: 1%;
 }
 
-.font20{
-  font-size: 15px;
+.desc{
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
+  font-weight: 450;
+
+  font-size: 16px;
+  text-align: left;
 }
 
 .left-panel{
   height: 100%;
-  width: 95%;
+  /* width: 250px; */
+  width:20vw;
   grid-column-start: 1;
 
 }
 
 
+
+.acc{
+
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
+  font-weight: 450;
+
+  font-size: 22px;
+
+}
+
 .tweet-container{
+  margin-left: 2%;
   height: 100%;
-  width: 95%;
+  width:50vw;
+  /* width: 95%; */
   grid-column-start: 2;
   grid-column-end: 4;
 
@@ -47,14 +65,16 @@
 
 .right-panel{
   height: 100%;
-  width: 95%;
+  width:20vw;
+
+  /* width: 95%; */
   grid-column-start: 4;
 }
 
 
 .reload-button{
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
-  font-weight: 500;
+  font-weight: 600;
   color:white;
   background-color: #1DA1F2;
   font-size: 20px;
@@ -71,16 +91,3 @@
 }
 
 
-
-.App-header {
-  /* background-color: #282c34; */
-  min-height: 15vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  /* color: white; */
-  color: black;
-
-}
