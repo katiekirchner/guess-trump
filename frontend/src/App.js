@@ -291,7 +291,9 @@ import TweetBox from './component/tweetBox';
                       Accuracy: {this.state.accuracy}%
                     </p>
                     <p>
-                      Correct: {this.state.correct}   Total: {this.state.total} 
+                      Correct: {this.state.correct}  
+                      &nbsp;&nbsp;&nbsp;  
+                      Total: {this.state.total} 
                     </p>
 
                     <br></br>
