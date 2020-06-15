@@ -148,13 +148,19 @@ var shuffle = require('shuffle-array');
 
             <div className="grid-container">
                 <div className="left-panel">
+
+                  <p className="question">
+                  Can you pick the fake Tweet?
+                  </p>
+
+
                   <p className="desc">
                     Using a corpus of the entire collection of
                     Donald Trump's Tweets, this app generates a Markov chain. 
                   </p>
 
                   <p className="desc">
-                    From the Markov model, a sentence (or Tweet in this case)
+                    From the Markov chain, a sentence (or Tweet in this case)
                     is created.
 
                   </p>
@@ -165,9 +171,7 @@ var shuffle = require('shuffle-array');
                     entire Tweet history.
                   </p>
 
-                  <p className="desc">
-                  Can you pick the fake Tweet?
-                  </p>
+                
 
                 </div>
 

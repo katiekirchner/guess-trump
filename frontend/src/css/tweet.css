@@ -18,16 +18,22 @@
 
 
 .text-holder{
-    width: 80%;
-    padding-left:60px;
-    margin: 5%;
+    width: 85%;
+    /* padding-left:60px; */
+    top: -15px;
+    position: relative;
+    /* margin: 5%; */
+    display: inline-flex;
+
 }
 
 
+
+
 .handle-holder{
-    width: 80%;
-    padding-left:60px;
-    margin-left: 5%;
+    width: 85%;
+    padding-left:2px;
+    display: inline-flex;
 }
 
 .avatar{
@@ -38,19 +44,24 @@
     margin: 5px;
 }
 
-.handle{
-
+.name{
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
     font-weight: 700;
     font-size: 15px;
     text-align: left;
 }
 
+.handle{
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
+    font-weight: 350;
+    font-size: 15px;
+    text-align: center;
+}
+
 
 .tweetText{
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
     font-weight: 400;
-
     font-size: 20px;
     text-align: left;
 }
