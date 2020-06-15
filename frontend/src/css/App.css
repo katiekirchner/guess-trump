@@ -36,22 +36,18 @@
 
 .left-panel{
   height: 100%;
-  /* width: 250px; */
   width:20vw;
   grid-column-start: 1;
-
 }
 
 
 
 .acc{
-
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
   font-weight: 450;
-
   font-size: 22px;
-
 }
+
 
 .tweet-container{
   margin-left: 2%;
@@ -60,15 +56,13 @@
   /* width: 95%; */
   grid-column-start: 2;
   grid-column-end: 4;
-
 }
 
 .right-panel{
   height: 100%;
   width:20vw;
-
-  /* width: 95%; */
   grid-column-start: 4;
+
 }
 
 
@@ -77,12 +71,13 @@
   font-weight: 600;
   color:white;
   background-color: #1DA1F2;
-  font-size: 20px;
+  font-size: 18px;
   height: 50px;
   width: 200px;
   border: none;
   border-radius: 30px;
   outline: none;
+  margin-bottom:  20px;
 
 }
 

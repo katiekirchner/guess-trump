@@ -1,122 +1,11 @@
 import React, {Component, useState, useEffect } from 'react';
+// import React from 'react';
+
 import './css/App.css';
 import bird from './component/trumpBird1.png';
 import TweetBox from './component/tweetBox';
 
-
-
-
-
-// function App() {
-
-//   const [fakeTweet, setFakeTweet] = useState("");
-//   const [random, setRandom] = useState("");
-//   const [random2, setRandom2] = useState("");
-
-
-//   const [correct, setCorrect] = useState(0);
-//   const [total, setTotal] = useState(0);
-//   const [accuracy, setAccuracy] = useState(0);
-
-//   const [allTweets, setAllTweets] = useState([]);
-
-
-
-//   function getTweets(){
-//       fetch('/tweet').then(res => res.json()).then(data => {
-//         setFakeTweet(data.tweet);
-//         setAllTweets([data.tweet]);
-//       });
-
-//       fetch('/random').then(res => res.json()).then(data => {
-//         setRandom(data.random);
-//         setAllTweets(allTweets => [...allTweets, data.tweet]);
-
-//       });
-
-//       fetch('/random').then(res => res.json()).then(data => {
-//         setRandom2(data.random);
-//         setAllTweets(allTweets => [...allTweets, data.tweet]);
-
-//       });
-
-
-//       // setAllTweets([fakeTweet, random, random2]);
-//   }
-
-
-
-//   useEffect(() => {
-//     getTweets();
-//   }, []);
-
-
-
-//   function counter(){
-//     console.log("test")
-//     setTotal(total+1);
-//   }
-
-
-//   function returnTest(){
-//     return (allTweets);
-
-//   }
-
-//   function renderTweetBox(text){
-//     return (
-//         <div onClick={()=> counter()}>
-//           <TweetBox text={text}/>
-//         </div>
-//       );
-//   }
-
-
-//   return (
-//     <div className="App">
-//       <header className="header">
-//         <img src={bird} className="trump-bird" alt="logo" />
-//       </header>
-
-
-//       <div className="grid-container">
-//           <div className="left-panel">
-//             <p className="font20">
-//               Using a corpus of the entire collection of
-//               Donald Trump's Tweets, a Tweet in the  
-//             </p>
-
-//             <p className="font20">
-//               The fake Tweet generated from the Markov chain is placed
-//               amongst two real Tweets randomly selected from Donald Trump's 
-//               entire Tweet history.
-//             </p>
-
-//             <p className="font20">
-//              Can you pick the fake Tweet?
-//              {returnTest()}
-//             </p>
-
-
-//             <p>Total: {total} </p>
-//           </div>
-
-
-//           <div className="tweet-container">
-//             {renderTweetBox(fakeTweet)}
-//             {renderTweetBox(random)}
-//             {renderTweetBox(random2)}
-//           </div>
-
-//           <div className="right-panel">
-//               <button className="reload-button" onClick={() => getTweets()}> Reload </button>      
-//           </div>
-
-//         </div>
-//     </div>
-
-//   );
-// }
+var shuffle = require('shuffle-array');
 
 
   class App extends React.Component {
@@ -124,109 +13,131 @@ import TweetBox from './component/tweetBox';
     constructor(props) {
       super(props);
       this.state = {
-        fakeTweet: '',
+        fakeTweet: " ",
+        tweet1: " ",
+        tweet2: " ",
+        previous:" ",
         correct: 0,
         total: 0,
         accuracy: 0,
-        allTweets: []    
+        allTweets: [" ", " ", " "]  
       };
     }
 
+
     componentDidMount(){
+      
       this.getTweets();
-      // fetch('/tweet').then(res => res.json()).then(data => {
-      //   // this.setState({fakeTweet: data.tweet});
-      //   this.state.allTweets.push(data.tweet);
-
-      // });
-
-      // fetch('/random').then(res => res.json()).then(data => {
-      //   this.state.allTweets.push(data.random);
-      // });
-
-      // fetch('/random').then(res => res.json()).then(data => {
-      //   this.state.allTweets.push(data.random);
-      // });
-
-      // console.log(this.state.allTweets)
+      this.getTweets();
    }
 
-  
-  
+
+
+
 
     getTweets(){
+
         fetch('/tweet').then(res => res.json()).then(data => {
           this.setState({fakeTweet: data.tweet});
-          // this.setState({allTweets[0]: data.tweet})
-          this.state.allTweets[0]=(data.tweet);
-
         });
 
         fetch('/random').then(res => res.json()).then(data => {
-          this.state.allTweets[1]=(data.random);
+          this.setState({tweet1: data.random});
         });
 
         fetch('/random').then(res => res.json()).then(data => {
-          this.state.allTweets[2]=(data.random);
+          this.setState({tweet2: data.random});
+          this.setAllTweets();
         });
 
-        // this.state.allTweets.sort(() => 0.5 - Math.random());
-
-
-        // this.state.allTweets.push(this.state.fakeTweet);
-
-        // this.setState(_.shuffle(this.state.allTweets));
-        // setAllTweets([fakeTweet, random, random2]);
     }
 
 
+  
 
-    counter(num){
+    setAllTweets(){      
+        var num = (Math.floor(Math.random() * 3));  
 
-      if (this.state.allTweets[num] === this.state.fakeTweet){
-        this.setState({correct: this.state.correct+1});
+        if (num == 0){
+          this.setState({allTweets: [ this.state.fakeTweet, this.state.tweet1, this.state.tweet2]});
+        } else if (num == 1){
+          this.setState({allTweets: [ this.state.tweet1, this.state.fakeTweet, this.state.tweet2]});
+        } else if (num == 2){
+          this.setState({allTweets: [ this.state.tweet1, this.state.tweet2, this.state.fakeTweet]});
+        }
+    }
+
+
+    counter(value){
+       var tot = this.state.total + 1;
+
+      if (this.state.allTweets[value] === this.state.fakeTweet){
+
+        var cor = this.state.correct+1;
+        this.setState({correct: cor});
+
+        var acc = ((cor/tot)*100).toPrecision(4);
+        this.setState({accuracy: acc});
+      } else {
+
+        var accurate = ((this.state.correct/tot)*100).toPrecision(4);
+
+        this.setState({accuracy: accurate});
       }
 
-      this.setState({total: this.state.total+1});
-      this.setAccuracy();
+
+      this.setState({total: tot});
+      this.setState({previous: this.state.fakeTweet})
+
+      // this.setAccuracy();
+      this.getTweets();
     }
 
-    setAccuracy(){
+    // setAccuracy(){
+    //   console.log(this.state.correct)
+
+    //   console.log(this.state.total)
+
+    //   console.log(this.state.correct/this.state.total)
+
+    //   var total = this.state.total + 1;
+    //   var correct = this.state.correct;
+
+    //   var num = (this.state.total === 0) ? 0 : (((this.state.correct/this.state.total)*100).toPrecision(4));
       
-      var num = (this.state.total === 0) ? 0 : (((this.state.correct/this.state.total)*100).toPrecision(4));
-      this.setState({accuracy: num});
-    }
+    //   // var num =(((correct/total)).toPrecision(4));
+
+      
+    //   this.setState({accuracy: num});
+    // }
 
  
 
-    renderTweetBox(){
-      console.log(this.state.allTweets);
+    // renderTweetBox(){
 
-        // this.getTweets();
-        return (
-            <div className="tweet-container">   
-                {/* <TweetBox onClick={()=> this.counter(0)} text={this.state.allTweets[0]}/>
-                <TweetBox onClick={()=> this.counter(1)} text={this.state.allTweets[1]}/>
-                <TweetBox onClick={()=> this.counter(2)} text={this.state.allTweets[2]}/> */}
+    //     return (
+    //         <div className="tweet-container">   
 
-              <div onClick={()=> this.counter(0)}>
-                <TweetBox text={this.state.allTweets[0]}/>
-              </div> 
+    //           <div onClick={()=> this.counter(0)}>
+    //             <TweetBox text={this.state.allTweets[0]}/>
+    //           </div> 
 
-              <div onClick={()=> this.counter(1)}>
-                < TweetBox text={this.state.allTweets[1]}/>
-              </div>
+    //           <div onClick={()=> this.counter(1)}>
+    //             < TweetBox text={this.state.allTweets[1]}/>
+    //           </div>
 
-              <div onClick={()=> this.counter(2)}>
-                <TweetBox text={this.state.allTweets[2]}/>
-              </div>
-            </div>
-          );
+    //           <div onClick={()=> this.counter(2)}>
+    //             <TweetBox text={this.state.allTweets[2]}/>
+    //           </div>
+    //         </div>
+    //       );
         
-    }
+    // }
+
 
 
     render (){
+
       return (
 
           <div className="App">
@@ -261,7 +172,20 @@ import TweetBox from './component/tweetBox';
                 </div>
 
                 <div className="tweet-container">   
-      
+                {/* <div onClick={()=> this.counter(test[0])}>
+                  <TweetBox text={test[0]}/>
+                </div> 
+
+                <div onClick={()=> this.counter(test[1])}>
+                  < TweetBox text={test[1]}/>
+                </div>
+
+                <div onClick={()=> this.counter(test[3])}>
+                  <TweetBox text={test[2]}/>
+                </div> */}
+
+
+
                   <div onClick={()=> this.counter(0)}>
                     <TweetBox text={this.state.allTweets[0]}/>
                   </div> 
@@ -273,18 +197,9 @@ import TweetBox from './component/tweetBox';
                   <div onClick={()=> this.counter(2)}>
                     <TweetBox text={this.state.allTweets[2]}/>
                   </div>
-               </div>
+              </div>
 
                 {/* {this.renderTweetBox()} */}
-
-                {/* <div className="tweet-container">
-                 <TweetBox text={this.state.fakeTweet}/>
-
-                 {this.renderTweetBox()}
-
-
-
-                </div> */}
 
                 <div className="right-panel">
                     <p className="acc">
@@ -297,9 +212,12 @@ import TweetBox from './component/tweetBox';
                     </p>
 
                     <br></br>
+                    <button className="reload-button" onClick={() => this.getTweets()}> Reload Tweets </button>      
+                
+                    <hr></hr>
 
-                    <button className="reload-button" onClick={() => this.getTweets()}> Reload </button>      
-                 
+                    <p> Previous fake Tweet: </p>
+                    <p> {this.state.previous} </p>
                 </div>
 
               </div>
