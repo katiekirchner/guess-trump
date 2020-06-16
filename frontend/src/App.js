@@ -90,9 +90,11 @@ var shuffle = require('shuffle-array');
 
 
       this.setState({total: tot});
+      this.setAllTweets();
+
       // this.setState({previous: this.state.fakeTweet})
 
-      this.renderTweetBox();
+      // this.renderTweetBox();
       // this.setAccuracy();
       // this.getTweets();
     }
@@ -162,9 +164,9 @@ var shuffle = require('shuffle-array');
 
                 </div>
 
-                {this.renderTweetBox()}
+                {/* {this.renderTweetBox()} */}
 
-                {/* <div className="tweet-container">   
+                <div className="tweet-container">   
 
                   <div onClick={()=> this.counter(0)}>
                     <TweetBox text={this.state.allTweets[0]}/>
@@ -177,7 +179,7 @@ var shuffle = require('shuffle-array');
                   <div onClick={()=> this.counter(2)}>
                     <TweetBox text={this.state.allTweets[2]}/>
                   </div>
-                </div> */}
+                </div>
 
                 <div className="right-panel">
                     <p className="acc">
