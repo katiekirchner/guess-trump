@@ -92,32 +92,34 @@ var shuffle = require('shuffle-array');
       this.setState({total: tot});
       // this.setState({previous: this.state.fakeTweet})
 
+      this.renderTweetBox();
       // this.setAccuracy();
       // this.getTweets();
     }
 
 
 
-    // renderTweetBox(){
+    renderTweetBox(){
 
-    //     return (
-    //         <div className="tweet-container">   
+        return (
 
-    //           <div onClick={()=> this.counter(0)}>
-    //             <TweetBox text={this.state.allTweets[0]}/>
-    //           </div> 
+            <div className="tweet-container">   
 
-    //           <div onClick={()=> this.counter(1)}>
-    //             < TweetBox text={this.state.allTweets[1]}/>
-    //           </div>
+              <div onClick={()=> this.counter(0)}>
+                <TweetBox text={this.state.allTweets[0]}/>
+              </div> 
 
-    //           <div onClick={()=> this.counter(2)}>
-    //             <TweetBox text={this.state.allTweets[2]}/>
-    //           </div>
-    //         </div>
-    //       );
+              <div onClick={()=> this.counter(1)}>
+                < TweetBox text={this.state.allTweets[1]}/>
+              </div>
+
+              <div onClick={()=> this.counter(2)}>
+                <TweetBox text={this.state.allTweets[2]}/>
+              </div>
+            </div>
+          );
         
-    // }
+    }
 
 
 
@@ -160,7 +162,9 @@ var shuffle = require('shuffle-array');
 
                 </div>
 
-                <div className="tweet-container">   
+                {this.renderTweetBox()}
+
+                {/* <div className="tweet-container">   
 
                   <div onClick={()=> this.counter(0)}>
                     <TweetBox text={this.state.allTweets[0]}/>
@@ -173,7 +177,7 @@ var shuffle = require('shuffle-array');
                   <div onClick={()=> this.counter(2)}>
                     <TweetBox text={this.state.allTweets[2]}/>
                   </div>
-              </div>
+                </div> */}
 
                 <div className="right-panel">
                     <p className="acc">
