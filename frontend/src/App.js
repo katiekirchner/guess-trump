@@ -28,7 +28,7 @@ var shuffle = require('shuffle-array');
     componentDidMount(){
       
       this.getTweets();
-      // this.getTweets();
+      this.getTweets();
    }
 
 
@@ -72,27 +72,28 @@ var shuffle = require('shuffle-array');
        var tot = this.state.total + 1;
        this.setState({previous: this.state.fakeTweet})
 
+       this.getTweets();
 
-      if (this.state.allTweets[value] === this.state.fakeTweet){
+        if (this.state.allTweets[value] === this.state.fakeTweet){
 
-        var cor = this.state.correct+1;
-        this.setState({correct: cor});
+          var cor = this.state.correct+1;
+          this.setState({correct: cor});
 
-        var acc = ((cor/tot)*100).toPrecision(4);
-        this.setState({accuracy: acc});
-      } else {
+          var acc = ((cor/tot)*100).toPrecision(4);
+          this.setState({accuracy: acc});
+        } else {
 
-        var accurate = ((this.state.correct/tot)*100).toPrecision(4);
+          var accurate = ((this.state.correct/tot)*100).toPrecision(4);
 
-        this.setState({accuracy: accurate});
-      }
+          this.setState({accuracy: accurate});
+        }
 
 
       this.setState({total: tot});
       // this.setState({previous: this.state.fakeTweet})
 
       // this.setAccuracy();
-      this.getTweets();
+      // this.getTweets();
     }
 
 
