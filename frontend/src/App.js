@@ -96,7 +96,7 @@ var shuffle = require('shuffle-array');
 
       // this.setState({previous: this.state.fakeTweet})
 
-      // this.renderTweetBox();
+      this.render();
       // this.setAccuracy();
       // this.getTweets();
     }
