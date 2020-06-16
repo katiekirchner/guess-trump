@@ -28,7 +28,7 @@ var shuffle = require('shuffle-array');
     componentDidMount(){
       
       this.getTweets();
-      this.getTweets();
+      // this.getTweets();
    }
 
 
@@ -39,7 +39,7 @@ var shuffle = require('shuffle-array');
 
         fetch('/tweet').then(res => res.json()).then(data => {
           this.setState({fakeTweet: "faaaaaaaake    " + data.tweet});
-          console.log(data.tweet)
+          console.log(this.state.fakeTweet)
 
         });
 
