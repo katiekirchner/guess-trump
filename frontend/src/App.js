@@ -36,6 +36,7 @@ var shuffle = require('shuffle-array');
 
 
     getTweets(){
+        this.setState({previous: this.state.fakeTweet})
 
         fetch('/tweet').then(res => res.json()).then(data => {
           this.setState({fakeTweet: data.tweet});
@@ -87,31 +88,13 @@ var shuffle = require('shuffle-array');
 
 
       this.setState({total: tot});
-      this.setState({previous: this.state.fakeTweet})
+      // this.setState({previous: this.state.fakeTweet})
 
       // this.setAccuracy();
       this.getTweets();
     }
 
-    // setAccuracy(){
-    //   console.log(this.state.correct)
 
-    //   console.log(this.state.total)
-
-    //   console.log(this.state.correct/this.state.total)
-
-    //   var total = this.state.total + 1;
-    //   var correct = this.state.correct;
-
-    //   var num = (this.state.total === 0) ? 0 : (((this.state.correct/this.state.total)*100).toPrecision(4));
-      
-    //   // var num =(((correct/total)).toPrecision(4));
-
-      
-    //   this.setState({accuracy: num});
-    // }
-
- 
 
     // renderTweetBox(){
 
@@ -176,19 +159,6 @@ var shuffle = require('shuffle-array');
                 </div>
 
                 <div className="tweet-container">   
-                {/* <div onClick={()=> this.counter(test[0])}>
-                  <TweetBox text={test[0]}/>
-                </div> 
-
-                <div onClick={()=> this.counter(test[1])}>
-                  < TweetBox text={test[1]}/>
-                </div>
-
-                <div onClick={()=> this.counter(test[3])}>
-                  <TweetBox text={test[2]}/>
-                </div> */}
-
-
 
                   <div onClick={()=> this.counter(0)}>
                     <TweetBox text={this.state.allTweets[0]}/>
@@ -202,8 +172,6 @@ var shuffle = require('shuffle-array');
                     <TweetBox text={this.state.allTweets[2]}/>
                   </div>
               </div>
-
-                {/* {this.renderTweetBox()} */}
 
                 <div className="right-panel">
                     <p className="acc">
