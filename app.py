@@ -27,15 +27,6 @@ def index():
 
 @app.route('/tweet')
 def generate_tweet():
-    # with open("data.txt") as tweets:
-    #     text = tweets.read()
-
-    # corpus = markovify.NewlineText(text, state_size=5)
-    # corpus = corpus.compile()
-    # global corpus   
-
-    # tweet = corpus.make_short_sentence(350, tries=100)
-
     tweet = corpus.make_short_sentence(350, tries=100)
   
     return {'tweet': tweet}
