@@ -39,6 +39,8 @@ var shuffle = require('shuffle-array');
 
         fetch('/tweet').then(res => res.json()).then(data => {
           this.setState({fakeTweet: "faaaaaaaake    " + data.tweet});
+          console.log(data.tweet)
+
         });
 
         fetch('/random').then(res => res.json()).then(data => {
@@ -75,7 +77,7 @@ var shuffle = require('shuffle-array');
        this.setState({previous: this.state.fakeTweet})
 
        this.getTweets();
-       this.getTweets();
+      //  this.getTweets();
 
 
         if (this.state.allTweets[value] === this.state.fakeTweet){
