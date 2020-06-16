@@ -58,6 +58,8 @@ var shuffle = require('shuffle-array');
     setAllTweets(){      
         var num = (Math.floor(Math.random() * 3));  
 
+        console.log(num);
+
         if (num === 0){
           this.setState({allTweets: [ this.state.fakeTweet, this.state.tweet1, this.state.tweet2]});
         } else if (num === 1){
