@@ -28,7 +28,7 @@ var shuffle = require('shuffle-array');
     componentDidMount(){
       
       this.getTweets();
-      this.getTweets();
+      // this.getTweets();
    }
 
 
@@ -36,10 +36,9 @@ var shuffle = require('shuffle-array');
 
 
     getTweets(){
-        this.setState({previous: this.state.fakeTweet})
 
         fetch('/tweet').then(res => res.json()).then(data => {
-          this.setState({fakeTweet: data.tweet});
+          this.setState({fakeTweet: "faaaaaaaake    " + data.tweet});
         });
 
         fetch('/random').then(res => res.json()).then(data => {
@@ -59,11 +58,11 @@ var shuffle = require('shuffle-array');
     setAllTweets(){      
         var num = (Math.floor(Math.random() * 3));  
 
-        if (num == 0){
+        if (num === 0){
           this.setState({allTweets: [ this.state.fakeTweet, this.state.tweet1, this.state.tweet2]});
-        } else if (num == 1){
+        } else if (num === 1){
           this.setState({allTweets: [ this.state.tweet1, this.state.fakeTweet, this.state.tweet2]});
-        } else if (num == 2){
+        } else if (num === 2){
           this.setState({allTweets: [ this.state.tweet1, this.state.tweet2, this.state.fakeTweet]});
         }
     }
@@ -71,6 +70,8 @@ var shuffle = require('shuffle-array');
 
     counter(value){
        var tot = this.state.total + 1;
+       this.setState({previous: this.state.fakeTweet})
+
 
       if (this.state.allTweets[value] === this.state.fakeTweet){
 
