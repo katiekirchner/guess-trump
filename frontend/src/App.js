@@ -73,6 +73,8 @@ var shuffle = require('shuffle-array');
        this.setState({previous: this.state.fakeTweet})
 
        this.getTweets();
+       this.getTweets();
+
 
         if (this.state.allTweets[value] === this.state.fakeTweet){
 
@@ -90,7 +92,7 @@ var shuffle = require('shuffle-array');
 
 
       this.setState({total: tot});
-      this.setAllTweets();
+      // this.setAllTweets();
 
       // this.setState({previous: this.state.fakeTweet})
 
