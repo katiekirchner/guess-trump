@@ -53,7 +53,7 @@ var shuffle = require('shuffle-array');
         });
 
         // this.setAllTweets();
-
+        this.render();
     }
 
 
@@ -61,9 +61,9 @@ var shuffle = require('shuffle-array');
 
     setAllTweets(){      
         var num = (Math.floor(Math.random() * 3));  
+        console.log("Here 2 "+ this.state.fakeTweet)
 
         console.log(num);
-        console.log("Here 2 "+ this.state.fakeTweet)
 
 
         if (num === 0){
