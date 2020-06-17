@@ -30,7 +30,7 @@ var shuffle = require('shuffle-array');
       this.getTweets();
       this.getTweets();
 
-      // this.render();
+      this.render();
    }
 
 
@@ -40,11 +40,8 @@ var shuffle = require('shuffle-array');
     getTweets(){
 
         fetch('/tweet').then(res => res.json()).then(data => {
-          this.setState({fakeTweet: "faaaaaaaake    " + data.tweet});
-          console.log("Here 1 "+this.state.fakeTweet)
+          this.setState({fakeTweet: data.tweet});
           this.setAllTweets();
-
-
         });
 
         // fetch('/random').then(res => res.json()).then(data => {
@@ -65,9 +62,6 @@ var shuffle = require('shuffle-array');
 
     setAllTweets(){      
         var num = (Math.floor(Math.random() * 3));  
-        console.log("Here 2 "+ this.state.fakeTweet)
-
-        console.log(num);
 
         fetch('/random').then(res => res.json()).then(data => {
           this.setState({tweet1: data.random});
