@@ -28,6 +28,8 @@ var shuffle = require('shuffle-array');
     componentDidMount(){
       
       this.getTweets();
+      this.getTweets();
+
       // this.render();
    }
 
@@ -40,17 +42,19 @@ var shuffle = require('shuffle-array');
         fetch('/tweet').then(res => res.json()).then(data => {
           this.setState({fakeTweet: "faaaaaaaake    " + data.tweet});
           console.log("Here 1 "+this.state.fakeTweet)
-
-        });
-
-        fetch('/random').then(res => res.json()).then(data => {
-          this.setState({tweet1: data.random});
-        });
-
-        fetch('/random').then(res => res.json()).then(data => {
-          this.setState({tweet2: data.random});
           this.setAllTweets();
+
+
         });
+
+        // fetch('/random').then(res => res.json()).then(data => {
+        //   this.setState({tweet1: data.random});
+        // });
+
+        // fetch('/random').then(res => res.json()).then(data => {
+        //   this.setState({tweet2: data.random});
+        //   this.setAllTweets();
+        // });
 
         // this.setAllTweets();
         this.render();
@@ -64,6 +68,15 @@ var shuffle = require('shuffle-array');
         console.log("Here 2 "+ this.state.fakeTweet)
 
         console.log(num);
+
+        fetch('/random').then(res => res.json()).then(data => {
+          this.setState({tweet1: data.random});
+        });
+
+        fetch('/random').then(res => res.json()).then(data => {
+          this.setState({tweet2: data.random});
+          // this.setAllTweets();
+        });
 
 
         if (num === 0){
