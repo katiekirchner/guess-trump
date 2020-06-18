@@ -29,6 +29,7 @@ var shuffle = require('shuffle-array');
       
       this.getTweets();
       this.getTweets();
+      this.getTweets();
 
       this.render();
    }
